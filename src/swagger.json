@@ -1,0 +1,165 @@
+{
+  "swagger":"2.0",
+  "info":{
+    "version":"1.0.0",
+    "title":"JobsNET",
+    "termsOfService":"http://swagger.io/terms/",
+    "license":{
+      "name":"Apache 2.0",
+      "url":"http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "schemes":[
+    "http",
+    "https"
+  ],
+  "consumes":[
+    "application/json"
+  ],
+  "basePath":"/",
+  "paths":{
+    "/user":{
+      "post":{
+        "tags":[
+          "User"
+        ],
+        "summary":"Endpoint to create user",
+        "parameters":[
+          {
+            "name":"user",
+            "in":"body",
+            "description":"Data pass in body",
+            "required":true,
+            "schema":{
+              "type":"object",
+              "properties":{
+                "nome":{
+                  "type":"string",
+                  "example":"Isabela Francisca Corte Real"
+                },
+                "profissao":{
+                  "type":"string",
+                  "example":"Design"
+                },
+                "identidade":{
+                  "type":"string",
+                  "example":"35.724.575-1"
+                },
+                "cpf":{
+                  "type":"string",
+                  "example":"150.305.671-60"
+                },
+                "email":{
+                  "type":"string",
+                  "example":"isabelafranciscacortereal_@paginacom.com.br"
+                },
+                "telefone":{
+                  "type":"string",
+                  "example":"(63) 2725-8952"
+                },
+                "dataDeNascimento":{
+                  "type":"string",
+                  "example":"12/12/1966"
+                },
+                "corDaPele":{
+                  "type":"string",
+                  "example":"Branco"
+                },
+                "sexo":{
+                  "type":"string",
+                  "example":"Feminino"
+                },
+                "localizacao":{
+                  "type":"string",
+                  "example":"Rua da Antonio Nunes Silva, 708, Loteamento Campo Bello, Gurupi, TO, 77426-102"
+                }
+              }
+            }
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"Create user successful",
+            "schema":{
+              "message":"object",
+              "properties":{
+                "token":{
+                  "type":"string",
+                  "example":"Usuário criado com sucesso."
+                }
+              }
+            }
+          },
+          "400":{
+            "description":"Create user incorrect",
+            "schema":{
+              "type":"object",
+              "properties":{
+                "message":{
+                  "type":"string",
+                  "example":"Não foi possível criar o usuário: ${error}"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/location":{
+      "get":{
+        "tags":[
+          "Location"
+        ],
+        "summary":"Location to get address",
+        "parameters":[
+          {
+            "name":"latitude",
+            "in":"path",
+            "description":"Latitude pass in query params",
+            "required":true,
+            "schema":{
+              "type":"string",
+              "example":"-7.089939"
+            }
+          },
+          {
+            "name":"longitude",
+            "in":"path",
+            "description":"Longitude pass in query params",
+            "required":true,
+            "schema":{
+              "type":"string",
+              "example":"-41.473452"
+            }
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"Latitude and longitude is valid",
+            "schema":{
+              "type":"object",
+              "properties":{
+                "address":{
+                  "type":"string",
+                  "example":"R. Joaquim Viana, 737 - Passagem das Pedras, Picos - PI, 64600-403"
+                }
+              }
+            }
+          },
+          "400":{
+            "description":"Latitude and longitude don't valid",
+            "schema":{
+              "type":"object",
+              "properties":{
+                "message":{
+                  "type":"string",
+                  "example":"Endereço não encontrado, preencha o campo por favor."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
