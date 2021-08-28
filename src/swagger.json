@@ -34,44 +34,46 @@
               "type":"object",
               "properties":{
                 "nome":{
-                  "type":"string",
-                  "example":"Isabela Francisca Corte Real"
+                  "type":"string"
                 },
                 "profissao":{
-                  "type":"string",
-                  "example":"Design"
+                  "type":"string"
                 },
                 "identidade":{
-                  "type":"string",
-                  "example":"35.724.575-1"
+                  "type":"string"
                 },
                 "cpf":{
-                  "type":"string",
-                  "example":"150.305.671-60"
+                  "type":"string"
                 },
                 "email":{
-                  "type":"string",
-                  "example":"isabelafranciscacortereal_@paginacom.com.br"
+                  "type":"string"
                 },
                 "telefone":{
-                  "type":"string",
-                  "example":"(63) 2725-8952"
+                  "type":"string"
                 },
                 "dataDeNascimento":{
-                  "type":"string",
-                  "example":"12/12/1966"
+                  "type":"string"
                 },
                 "corDaPele":{
-                  "type":"string",
-                  "example":"Branco"
+                  "type":"string"
                 },
                 "sexo":{
-                  "type":"string",
-                  "example":"Feminino"
+                  "type":"string"
                 },
-                "localizacao":{
-                  "type":"string",
-                  "example":"Rua da Antonio Nunes Silva, 708, Loteamento Campo Bello, Gurupi, TO, 77426-102"
+                "cep":{
+                  "type":"string"
+                },
+                "logradouro":{
+                  "type":"string"
+                },
+                "numero":{
+                  "type":"string"
+                },
+                "bairro":{
+                  "type":"string"
+                },
+                "cidade":{
+                  "type":"string"
                 }
               }
             }
@@ -83,7 +85,7 @@
             "schema":{
               "message":"object",
               "properties":{
-                "token":{
+                "message":{
                   "type":"string",
                   "example":"Usuário criado com sucesso."
                 }
@@ -113,35 +115,23 @@
         "summary":"Location to get address",
         "parameters":[
           {
-            "name":"latitude",
+            "name":"cep",
             "in":"path",
-            "description":"Latitude pass in query params",
+            "description":"CEP pass in query params",
             "required":true,
             "schema":{
-              "type":"string",
-              "example":"-7.089939"
-            }
-          },
-          {
-            "name":"longitude",
-            "in":"path",
-            "description":"Longitude pass in query params",
-            "required":true,
-            "schema":{
-              "type":"string",
-              "example":"-41.473452"
+              "type":"string"
             }
           }
         ],
         "responses":{
           "200":{
-            "description":"Latitude and longitude is valid",
+            "description":"CEP é obrigatório!",
             "schema":{
               "type":"object",
               "properties":{
-                "address":{
-                  "type":"string",
-                  "example":"R. Joaquim Viana, 737 - Passagem das Pedras, Picos - PI, 64600-403"
+                "cep":{
+                  "type":"string"
                 }
               }
             }
@@ -153,7 +143,7 @@
               "properties":{
                 "message":{
                   "type":"string",
-                  "example":"Endereço não encontrado, preencha o campo por favor."
+                  "example":"CEP não encontrado, preencha o campo por favor."
                 }
               }
             }

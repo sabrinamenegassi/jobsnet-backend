@@ -10,7 +10,11 @@ const UserSchema = new mongoose.Schema({
   dataDeNascimento: String,
   corDaPele: String,
   sexo: String,
-  localizacao: String
+  cep: String,
+  logradouro: String,
+  numero: String,
+  bairro: String,
+  cidade: String
 })
 
 module.exports = mongoose.model('User', UserSchema)

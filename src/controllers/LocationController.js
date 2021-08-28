@@ -2,26 +2,19 @@ const api = require('../services/api')
 
 module.exports = {
   async getLocation(request, response) {
-    const { latitude, longitude } = request.query
+    const { cep } = request.query
 
-    if (!latitude || !longitude) {
-      response
-        .status(400)
-        .json({ message: 'Latitude e longitude são obrigatórios!' })
+    if (!cep) {
+      response.status(400).json({ message: 'CEP é obrigatório!' })
     }
 
     try {
-      const { data } = await api.get('geocode/json', {
-        params: {
-          key: process.env.API_KEY,
-          latlng: `${latitude},${longitude}`
-        }
-      })
+      const { data } = await api.get(`${cep}/json`)
 
-      response.status(200).json({ address: data.results[0].formatted_address })
+      response.status(200).json(data)
     } catch (error) {
       response.status(400).json({
-        message: 'Endereço não encontrado, preencha o campo por favor.'
+        message: 'CEP não encontrado, preencha o campo por favor.'
       })
     }
   }
